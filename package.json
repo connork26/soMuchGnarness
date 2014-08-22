@@ -1,0 +1,22 @@
+{
+  "name": "hungry",
+  "version": "0.0.0",
+  "description": "ERROR: No README.md file found!",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "",
+  "license": "BSD",
+  "dependencies": {
+    "express": "~4.5.1",
+    "mysql": "~2.3.2",
+    "ejs": "~1.0.0",
+    "body-parser": "~1.4.3",
+    "connect": "~3.0.1",
+    "express-session": "~1.6.x",
+    "debug": "~1.0.0"
+  }
+}

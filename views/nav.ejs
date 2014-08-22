@@ -1,0 +1,64 @@
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-inverse">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/index">MotrGram</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <% if (username) {%>
+                <div class="navbar-right">
+                    <p class="welcome">Welcome, <%= username %>!</p></li>
+                    <button class='btn btn-default logout' type="submit">Logout</button>
+                </div>
+            <% } else { %>
+                <form class="navbar-form navbar-right" id="userLogin" role="form">
+                    <div class="form-group">
+                        <input type="text" id='email' placeholder="Email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id='password' placeholder="Password" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Sign in</button>
+                </form>
+            <% } %>
+        </div><!--/.navbar-collapse -->
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('#userLogin').submit(function(event){
+        event.preventDefault();
+        console.log('click submitted');
+        var data = {
+            email: $('#email').val(),
+            password: $('#password').val()
+        };
+        $.ajax({
+            url: "/login",
+            type: "POST",
+            contentType: "application/json",
+            processData: false,
+            data: JSON.stringify(data),
+            complete: function (data) {
+                console.log(data.responseText);
+                if (data.responseText == 'true'){
+                    window.location.replace('/feed');
+                } 
+            }
+        });
+    });
+    $('.logout').on('click', function (){
+        $.ajax({
+            url: '/logout',
+            type: 'GET',
+            complete: function (){
+                window.location.replace('/index');    
+            }
+        });
+    });
+</script>

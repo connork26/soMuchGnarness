@@ -1,0 +1,57 @@
+.welcome {
+  float: left;
+	padding: 7px 15px 7px 15px;
+	font-size: 18px;
+  height: 50px;
+	color: #ffffff;
+	margin: 8px 0px 8px -15px;
+}
+
+.signup-page{
+	height: auto;
+	width: auto;
+  	background-color: #eee;
+}
+
+.form-signin {
+  max-width: 400px;
+  padding: 15px;
+  margin: 0 auto;	
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+.form-signin input {
+	margin-bottom: 5px;
+}
+
+.navbar-collapse .collapse{
+  display: inline-block!important;
+  float: left;  
+}
+
+.logout {
+  float: right;
+  padding: 6px 12px 6px 12px;
+  background-color: #101010; 
+  color: #777;
+  border-color: #777; 
+  margin: 8px -15px 8px 0px;
+}
