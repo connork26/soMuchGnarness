@@ -17,7 +17,7 @@ connection.query('USE MotrGram', function (err) {
 
 var connection = require ('pg');
 
-pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+connection.connect(process.env.DATABASE_URL, function(err, client, done) {
     console.log('DB connected');
 });
 
