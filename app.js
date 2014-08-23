@@ -32,5 +32,5 @@ app.use('/feed', feed);
 app.use('/signUp', signUp);
 
 
-app.listen(8124, "127.0.0.1");
+app.listen(process.env.PORT || 5000);
 console.log("Express server listening, server running");
