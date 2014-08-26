@@ -17,6 +17,7 @@
     "connect": "~3.0.1",
     "express-session": "~1.6.x",
     "debug": "~1.0.0",
-    "pg": "2.x"
+    "pg": "2.x",
+    "mongojs": "0.14.0"
   }
 }
