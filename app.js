@@ -10,9 +10,9 @@ var express     = require('express'),
 
 // router 
 
-var index      = require('./controllers/index');
-	feed       = require('./controllers/feed');
-	signUp       = require('./controllers/signUp');
+var index      = require('./controllers/index'),
+	feed       = require('./controllers/feed'),
+	users     = require('./controllers/users');
 
 // Configuration
 
@@ -29,7 +29,7 @@ app.use(session({
 
 app.use('/', index);
 app.use('/feed', feed);
-app.use('/signUp', signUp);
+app.use('/users', users);
 
 
 app.listen(process.env.PORT || 5000);

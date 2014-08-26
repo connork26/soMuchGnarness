@@ -55,3 +55,25 @@
   border-color: #777; 
   margin: 8px -15px 8px 0px;
 }
+
+.feed-header h2 {
+  margin-top: 10px;
+}
+.feed-header button{
+  margin-top: 10px;
+  text-align: right;
+}
+
+div.post {
+  border: 1px dashed;
+  border-radius: 25px;
+  height: 202px; 
+}
+.post-image img {
+  max-height: 200px;
+  float: right;
+  border-radius: 0px 25px 25px 0px;
+}
+.post-content, .post-vehical {
+  margin-left: 20px;
+}

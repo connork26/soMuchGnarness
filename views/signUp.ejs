@@ -2,16 +2,42 @@
 <%include nav%>
 
 <div class="containter">
-	<form class="form-signin" role="form">
+	<form id='signUp' class="form-signin" role="form">
         <h2 class="form-signin-heading">Welcome to MotrGram</h2>
-        <input type="email" class="form-control" placeholder="Email address*" required="" autofocus="">
-        <input type="text" class="form-control" placeholder="User Name*" required="" autofocus="">
-        <input type="password" class="form-control" placeholder="Password*" required="">
-        <input type="text" class="form-control" placeholder="Birthyear">
-        <input type="text" class="form-control" placeholder="Zipcode">
+        <input id='Email' type="email" class="form-control" placeholder="Email*" required="" />
+        <input id='username' type="text" class="form-control" placeholder="User Name*" required="" />
+        <input id='passWord' type="password" class="form-control" placeholder="Password*" required="" />
+        <input id='birthYear' type="text" class="form-control" placeholder="Birth Year" />
+        <input id='zip' type="text" class="form-control" placeholder="Zipcode" />
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Join</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" value="Join">Join</button>
     </form>
 </div>
-
+<script type="text/javascript">
+$(document).ready(function (){
+    $('#signUp').on('submit', function (){
+        var payload = {
+            email: $('#Email').val(),
+            username: $('#username').val(),
+            password: $('#passWord').val(),
+            birthYear: $('#birthYear').val(),
+            zipcode: $('#zip').val()
+        }
+        console.log(payload);
+        var url = "/users/newUser"; //?username=" + $('#username').val() + '&email=' + $('#Email').val() +'&password=' + $('#passWord').val() + '&birthYear=' + $('#birthYear').val() + '&zip=' + $('#zip').val()
+        $.ajax({
+            url: url,
+            type: "POST",
+            contentType: "application/json",
+            processData: false,
+            data: JSON.stringify(payload),
+            complete: function (data) {
+                console.log('got back');
+                event.preventDefault();
+                window.location.replace('/feed');
+            }
+        });
+    });
+});
+</script>
 <% include footer%>

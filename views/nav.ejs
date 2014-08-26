@@ -39,7 +39,7 @@
             password: $('#password').val()
         };
         $.ajax({
-            url: "/login",
+            url: "/users/login",
             type: "POST",
             contentType: "application/json",
             processData: false,
@@ -54,7 +54,7 @@
     });
     $('.logout').on('click', function (){
         $.ajax({
-            url: '/logout',
+            url: '/users/logout',
             type: 'GET',
             complete: function (){
                 window.location.replace('/index');    

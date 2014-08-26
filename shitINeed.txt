@@ -1,0 +1,30 @@
+{
+	"_id" : ObjectId("53fbf924815d4e4b7ceb0f42"),
+	"type" : "user",
+	"vehical" : {
+		"make" : "ford",
+		"model" : "focus",
+		"year" : "2012"
+	},
+	"modTags" : [
+		"ford focus 2012"
+	],
+	"vinID" : null,
+	"content" : {
+		"body" : "too legit",
+		"image" : "http://www.picturescar.com/wp-content/uploads/2014/06/2012-ford-focus-sel-5.jpg"
+	},
+	"userID" : 1
+}
+
+{
+	"_id" : 1,
+	"username" : "connor26",
+	"vehicals" : [ ],
+	"intrests" : [
+		"ford focus 2012"
+	]
+}
+
+connect to mongo shell
+mongo ds063899.mongolab.com:63899/heroku_app28817289 -u heroku_app28817289 -p 5uelqhb4329sn0vv47j2jdolsu

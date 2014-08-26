@@ -10,13 +10,13 @@ CREATE TABLE Users (
 	password VARCHAR(100),
 	email varchar(200),
 	zipcode INT,
-	age int	
+	birthyear int	
 );
 
-INSERT INTO Users (username, password, email, zipcode, age) values (
+INSERT INTO Users (username, password, email, zipcode, birthyear) values (
 	'connork',
 	'password',
 	'connor@email.com',
 	'92078',
-	'21'
+	'1993'
 );

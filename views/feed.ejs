@@ -2,7 +2,29 @@
 <%include nav%>
 
 <div class="container">
-	<h1>Test</h1>
+	<div class="feed-header clearfix">
+			<h2 class="pull-left">Feed</h2>
+			<button type="button" class="btn btn-default btn-md feed-button pull-right">Post</button>
+	</div>
+
+	<div class="feed">
+		<% for (var i = 0; i < posts.length; i++) { %>
+			<div class="post">
+				<div class="post-image">
+					<img src="<%= posts[i].content.image %>" alt=""> 
+				</div>
+				<div class="post-content">
+					<h3 class="post-header">Header</h3>
+					<p><%= posts[i].content.body %></p>
+				</div>
+				<div class="post-vehical">
+					<h4 class="post-vehical-descr"><%= posts[i].vehical.make %> <%= posts[i].vehical.model %> <%= posts[i].vehical.year %></h4>
+					<p>Mods: exaust, interior</p>
+				</div>
+			</div>
+		<% } %>
+
+	</div>
 </div>
 
 <%include footer%>
