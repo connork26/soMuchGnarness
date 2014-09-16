@@ -4,27 +4,47 @@
 <div class="container">
 	<div class="feed-header clearfix">
 			<h2 class="pull-left">Feed</h2>
-			<button type="button" class="btn btn-default btn-md feed-button pull-right">Post</button>
+			<button type="button" class="btn btn-default btn-md feed-button pull-right" id='newPostButton'>Post</button>
 	</div>
 
 	<div class="feed">
 		<% for (var i = 0; i < posts.length; i++) { %>
-			<div class="post">
-				<div class="post-image">
-					<img src="<%= posts[i].content.image %>" alt=""> 
+			<div class="post col-md-6">
+				<% if (posts[i].content.image) { %>
+					<div class="post-image">
+						<img src="<%= posts[i].content.image %>" alt=""> 
+					</div>
+				<% } %>
+				<div class="post-content-container">
+					<div class="post-content">
+						<h3 class="post-header"><%= posts[i].content.title %></h3>
+						<p><%= posts[i].content.body %></p>
+					</div>
 				</div>
-				<div class="post-content">
-					<h3 class="post-header">Header</h3>
-					<p><%= posts[i].content.body %></p>
-				</div>
-				<div class="post-vehical">
-					<h4 class="post-vehical-descr"><%= posts[i].vehical.make %> <%= posts[i].vehical.model %> <%= posts[i].vehical.year %></h4>
-					<p>Mods: exaust, interior</p>
+				<div class="post-vehical-container">
+					<div class="post-vehical">
+						<h4 class="post-vehical-descr"><%= posts[i].vehical.make %> <%= posts[i].vehical.model %> <%= posts[i].vehical.year %></h4>
+						<p>Mods:
+							<% for (var j = 0; j < (posts[i].modTags.length > 5? 5 : posts[i].modTags.length); j++) { %>
+								<%= posts[i].modTags[j] %>
+							<% } %>
+						</p>
+					</div>
 				</div>
 			</div>
 		<% } %>
 
 	</div>
 </div>
+
+<script type="text/javascript">
+	$(document).ready(
+		$('#newPostButton').on('click', 
+			function (){
+				window.location.href = 'posts/newPost';
+			}
+		)
+	)
+</script>
 
 <%include footer%>

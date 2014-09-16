@@ -11,20 +11,15 @@
 	],
 	"vinID" : null,
 	"content" : {
-		"body" : "too legit",
+		"title": "focus",
+		"body" : "example post body",
 		"image" : "http://www.picturescar.com/wp-content/uploads/2014/06/2012-ford-focus-sel-5.jpg"
 	},
-	"userID" : 1
+	"userID" : 31,
+	"comments" : [],
+	"likes": []
 }
 
-{
-	"_id" : 1,
-	"username" : "connor26",
-	"vehicals" : [ ],
-	"intrests" : [
-		"ford focus 2012"
-	]
-}
 
 connect to mongo shell
 mongo ds063899.mongolab.com:63899/heroku_app28817289 -u heroku_app28817289 -p 5uelqhb4329sn0vv47j2jdolsu

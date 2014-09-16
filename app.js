@@ -12,7 +12,8 @@ var express     = require('express'),
 
 var index      = require('./controllers/index'),
 	feed       = require('./controllers/feed'),
-	users     = require('./controllers/users');
+	users     = require('./controllers/users'),
+	posts     = require('./controllers/posts');
 
 // Configuration
 
@@ -30,6 +31,7 @@ app.use(session({
 app.use('/', index);
 app.use('/feed', feed);
 app.use('/users', users);
+app.use('/posts', posts);
 
 
 app.listen(process.env.PORT || 5000);

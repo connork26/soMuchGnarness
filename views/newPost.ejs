@@ -1,0 +1,54 @@
+<%include header%>
+<%include nav%>
+
+<div class="container">
+	<form class='newPostForm'>
+		<h2 class="postHeader">New Post</h2>
+        <label>Post Title: <input id='postTitle' type="text" class="form-control" placeholder="My New Car" required="" /></label>
+        <label>
+        	<select id='type'>
+        		<option value="auto">Auto</option>
+        		<option value="watercraft">Watercraft</option>
+        		<option value="aircraft">Aircraft</option>
+        	</select>
+    	</label>
+        <label>Car Make: <input id='make' type="text" class="form-control" placeholder="Chevy" required="" /></label>
+        <label>Car Model: <input id='model' type="text" class="form-control" placeholder="Corvette" required="" /></label>
+        <label>Car Year: <input id='year' type="text" class="form-control" placeholder="2002" required="" /></label>
+        <label>Post Body: <textarea class="form-control" id='body' rows='5' cols='75'></textarea></label>
+        <label>Modification Tags: <input id="modTags" type="text" class="form-control" placeholder="Exhaust, Supercharged, etc..."></label><br />
+        <label>Images: <input id="postImages" class="form-control" type="file"></label>
+
+        <input type="submit" class="btn btn-big" value='Post'></input>
+	</form>
+</div>
+
+<script type="text/javascript">
+	$('.newPostForm').on('submit', function (){
+		console.log('clicked');
+		var payload = {
+			postTitle: $('#postTitle').val(),
+			type: $('#type').val(),
+			make: $('#make').val(),
+			model: $('#model').val(),
+			year: $('#year').val(),
+			body: $('#body').val(),
+			make: $('#make').val(),
+			modTags: $('#modTags').val(),
+			picURL: null
+		}
+
+		$.ajax({
+			url: '/posts/newPost',
+			type: "POST",
+            contentType: "application/json",
+            processData: false,
+            data: JSON.stringify(payload),
+            complete: function (data){
+            	window.location.replace('/feed');
+            }
+		});
+	});
+</script>
+
+<%include footer%>

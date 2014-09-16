@@ -24,7 +24,7 @@ $(document).ready(function (){
             zipcode: $('#zip').val()
         }
         console.log(payload);
-        var url = "/users/newUser"; //?username=" + $('#username').val() + '&email=' + $('#Email').val() +'&password=' + $('#passWord').val() + '&birthYear=' + $('#birthYear').val() + '&zip=' + $('#zip').val()
+        var url = "/users/newUser"; 
         $.ajax({
             url: url,
             type: "POST",
@@ -32,8 +32,6 @@ $(document).ready(function (){
             processData: false,
             data: JSON.stringify(payload),
             complete: function (data) {
-                console.log('got back');
-                event.preventDefault();
                 window.location.replace('/feed');
             }
         });

@@ -11,6 +11,8 @@ var express = require('express')
 	 				res.render('feed', {username: req.session.username, posts: result});
 	 			}
  			);
+	 	} else {
+	 		res.redirect('/users/signUp');
 	 	}
  	}
 );

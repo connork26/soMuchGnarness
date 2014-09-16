@@ -1,16 +1,42 @@
-.welcome {
+.welcome, .navbarElement{
   float: left;
-	padding: 7px 15px 7px 15px;
+	padding: 15px 15px 15px 15px;
 	font-size: 18px;
   height: 50px;
 	color: #ffffff;
-	margin: 8px 0px 8px -15px;
+  line-height: 20px;
+  margin: 0 0 0 0;
 }
 
+.col-md-6 {
+  padding: 0px;
+}
+
+.newPostForm{
+  max-width: 500px;
+  padding: 15px;
+  margin: 0 auto;
+  position: relative;
+  height: auto;
+}
+
+.newPostForm input{
+  width: 225px;
+}
+
+.newPostForm label {
+  text-align: center;
+  margin: 5 auto;
+}
+
+
+.newPostForm .postHeader{
+  text-align: center;
+}
 .signup-page{
 	height: auto;
 	width: auto;
-  	background-color: #eee;
+  background-color: #eee;
 }
 
 .form-signin {
@@ -65,8 +91,6 @@
 }
 
 div.post {
-  border: 1px dashed;
-  border-radius: 25px;
   height: 202px; 
 }
 .post-image img {
@@ -74,6 +98,20 @@ div.post {
   float: right;
   border-radius: 0px 25px 25px 0px;
 }
+.post-content-container, .post-vehical-container {
+  height: 50%;
+  margin: 0px;
+  border: 1px solid #777;
+}
+
+.post-content-container {
+  border-radius: 25px 25px 0px 0px;
+}
+
+.post-vehical-container {
+  border-radius: 0px 0px 25px 25px;
+}
+
 .post-content, .post-vehical {
   margin-left: 20px;
 }

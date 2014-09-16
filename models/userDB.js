@@ -1,21 +1,23 @@
 var mysql = require('mysql');
 
-/*
-// Application initialization
 
-var connection = mysql.createConnection({
+// local Application initialization
+/*
+var dbConfig = {
     host     : 'localhost',
     user     : 'root',
-    password : ''
-});
+    password : '',
+    port     : 3306,   
+    database : 'MotrGram'
+};
 
 // Database setup
 
-connection.query('USE MotrGram', function (err) {
-    if (err) throw err;
-});
+var connection = mysql.createConnection(dbConfig);
 */
 
+
+ // on server db
 var dbConfig = {
     host     : 'us-cdbr-iron-east-01.cleardb.net',
     user     : 'b7e5e75776c034',
@@ -24,7 +26,6 @@ var dbConfig = {
 }
 
 var connection = mysql.createConnection(dbConfig);
-
 
 exports.checkForUser = function (email, password, callback) {
     var query = 'SELECT email, username, userID FROM Users WHERE email = "' + email + '" AND password = "' + password + '";';
@@ -77,7 +78,7 @@ function handleDisconnect() {
   });                                     // process asynchronous requests in the meantime.
                                           // If you're also serving http, display a 503 error.
   connection.on('error', function(err) {
-    console.log('db error', err);
+    //console.log('db error', err);
     if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
       handleDisconnect();                         // lost due to either server restart, or a
     } else {                                      // connnection idle timeout (the wait_timeout
