@@ -22,3 +22,5 @@
 
 connect to mongo shell
 mongo ds063899.mongolab.com:63899/heroku_app28817289 -u heroku_app28817289 -p 5uelqhb4329sn0vv47j2jdolsu
+
+Mongo Lab login https://mongolab.com/login/?user=connork26
