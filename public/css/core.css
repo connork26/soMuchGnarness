@@ -1,4 +1,4 @@
-.welcome, .navbarElement{
+.welcome, .navbarElement, .invalidUser{
   float: left;
 	padding: 15px 15px 15px 15px;
 	font-size: 18px;
@@ -8,6 +8,14 @@
   margin: 0 0 0 0;
 }
 
+.searchForDiv .interest{
+  display: inline-block;
+}
+.invalidUser {
+  color: red;
+  height: auto;
+  padding: 7px 15px 7px 15px;
+}
 .col-md-6 {
   padding: 0px;
 }
@@ -99,16 +107,18 @@ div.post {
   border-radius: 0px 25px 25px 0px;
 }
 .post-content-container, .post-vehical-container {
-  height: 50%;
   margin: 0px;
   border: 1px solid #777;
 }
 
 .post-content-container {
   border-radius: 25px 25px 0px 0px;
+  height: 60%;
+
 }
 
 .post-vehical-container {
+  height: 40%;
   border-radius: 0px 0px 25px 25px;
 }
 

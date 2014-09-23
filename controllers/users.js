@@ -13,7 +13,6 @@ router.post('/login',
 					res.send(false);
 				}
 				else {
-					console.log('successful login');
 					console.log(result.userID);
 					console.log(result.username);
 

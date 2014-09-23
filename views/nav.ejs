@@ -18,6 +18,7 @@
                 </div>
             <% } else { %>
                 <form class="navbar-form navbar-right" id="userLogin" role="form">
+                    <div class="invalidUser" hidden='true'>Invalid Login</div>
                     <div class="form-group">
                         <input type="text" id='email' placeholder="Email" class="form-control" required>
                     </div>
@@ -49,7 +50,10 @@
                 console.log(data.responseText);
                 if (data.responseText == 'true'){
                     window.location.replace('/feed');
-                } 
+                } else if (data.responseText == 'false') {
+                    console.log('invalid user');
+                    $('.invalidUser').show();
+                }
             }
         });
     });

@@ -1,8 +1,8 @@
 // local
-var databaseUrl = 'motrgram';
+//var databaseUrl = 'motrgram';
 
 // server
-//var databaseUrl = "mongodb://heroku_app28817289:5uelqhb4329sn0vv47j2jdolsu@ds063899.mongolab.com:63899/heroku_app28817289";
+var databaseUrl = "mongodb://heroku_app28817289:5uelqhb4329sn0vv47j2jdolsu@ds063899.mongolab.com:63899/heroku_app28817289";
 var collections = ["users", "posts"];
 var db = require("mongojs").connect(databaseUrl, collections);
 
@@ -42,7 +42,7 @@ exports.getPostsWithUserID = function (userID, callback) {
 							console.log(err2);
 							return
 						}
-						callback(false, postResults);
+						callback(false, postResults, userResult.intrests);
 					}
 			);
 			}

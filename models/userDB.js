@@ -37,10 +37,9 @@ exports.checkForUser = function (email, password, callback) {
                 return null;
             }
             if (result.length > 0){
-                console.log('got a user');
                 callback(false, result[0]);
             } else {
-                return null;
+                callback(false, null);
             }
         }
     );
@@ -50,7 +49,6 @@ exports.createUser = function (email, username, password, zip, birthyear, callba
     var query = 'INSERT INTO Users (email, username, password, zipcode, birthyear) values (' +  
         '"' + email + '", "' + username + '", "' + password + '", ' + zip + ', ' + birthyear + ');';
 
-    console.log(query);
     connection.query(query, 
         function (err, result){
             if (err) {

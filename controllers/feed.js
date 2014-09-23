@@ -7,8 +7,16 @@ var express = require('express')
  	function (req, res) {
  		if (req.session.userID) {
 	 		mongoDB.getPostsWithUserID(req.session.userID, 
-	 			function (err, result){
-	 				res.render('feed', {username: req.session.username, posts: result});
+	 			function (err, result, userInterests){
+	 				if(!userInterests){
+	 					userInterests = ['All'];
+	 				}
+	 				res.render('feed', {	
+							username: req.session.username, 
+							posts: result, 
+							userInterests: userInterests
+						}
+	 				);
 	 			}
  			);
 	 	} else {

@@ -1,5 +1,4 @@
 {
-	"_id" : ObjectId("53fbf924815d4e4b7ceb0f42"),
 	"type" : "user",
 	"vehical" : {
 		"make" : "ford",
