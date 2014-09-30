@@ -24,6 +24,7 @@
 </div>
 
 <script type="text/javascript">
+	var picURL;
 	$('.newPostForm').on('submit', function (){
 		console.log('clicked');
 		var payload = {
@@ -35,7 +36,7 @@
 			body: $('#body').val(),
 			make: $('#make').val(),
 			modTags: $('#modTags').val(),
-			picURL: null
+			picURL: s3_upload;
 		}
 
 		$.ajax({
@@ -49,6 +50,23 @@
             }
 		});
 	});
+
+	function s3_upload(){
+	    var s3upload = new S3Upload({
+	        file_dom_selector: 'files',
+	        s3_sign_put_url: '/sign_s3',
+	        onProgress: function(percent, message) {
+	            status_elem.innerHTML = 'Upload progress: ' + percent + '% ' + message;
+	        },
+	        onFinishS3Put: function(public_url) {
+	        	console.log('Picture Uploaded at url: ' + public_url);
+	            return public_url;
+	        },
+	        onError: function(status) {
+	            console.log('Upload error: ' + status);
+	        }
+	    });
+	}
 </script>
 
 <%include footer%>

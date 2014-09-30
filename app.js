@@ -6,7 +6,8 @@ var express     = require('express'),
     ejs         = require('ejs'),
     bodyparser  = require('body-parser'),
     connect     = require('connect'),
-    session     = require('express-session');
+    session     = require('express-session'),
+    aws         = require('aws-sdk');
 
 // router 
 
@@ -32,6 +33,10 @@ app.use('/', index);
 app.use('/feed', feed);
 app.use('/users', users);
 app.use('/posts', posts);
+
+var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
+var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
+var S3_BUCKET = process.env.S3_BUCKET;
 
 
 app.listen(process.env.PORT || 5000);
