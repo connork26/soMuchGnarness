@@ -15,7 +15,7 @@ router.get('/',
 
 router.get('/index',
 	function(req, res) {
-		if (!req.session.userID){
+		if (!req.session.username){
     		req.session.userID = null;
     		req.session.username = null;
     	}	
@@ -27,6 +27,7 @@ router.get('/index',
 );
 
 router.get('/sign_s3', function(req, res){
+	console.log('looking to sign photo');
     aws.config.update({accessKeyId: AWS_ACCESS_KEY, secretAccessKey: AWS_SECRET_KEY});
     var s3 = new aws.S3();
     var s3_params = {

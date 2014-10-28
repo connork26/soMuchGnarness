@@ -64,4 +64,29 @@ router.post('/newUser',
 	}
 );
 
+router.post('/addIntrest',
+	function (req, res){
+		mongoDB.addUserIntrest(req.session.userID, req.body.intrest,
+			function (err, result){
+				if(err){
+					return false;
+				}
+				return true;
+			}
+		);
+	}
+);
+
+router.get('/account',
+	function (req, res){
+		res.render('account', {username: req.session.username});
+	}
+);
+
+router.get('/addVehical',
+	function (req, res){
+		res.render('addVehical', {username: req.session.username});
+	}
+);
+
 module.exports = router;

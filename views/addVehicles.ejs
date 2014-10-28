@@ -1,0 +1,35 @@
+<%include header%>
+<%include nav%>
+
+<div class="container">
+	<h1>Add Vehicle</h1>
+	<form class="form-signin" id="noVin" style="float: left">
+		<h2>Add With Details</h2>
+		<label>Car Make: <input id='make' type="text" class="form-control" placeholder="Chevy" required="" /></label>
+		<label>Car Model: <input id='model' type="text" class="form-control" placeholder="Corvette" required="" /></label>
+        <label>Car Year: <input id='year' type="text" class="form-control" placeholder="2002" required="" /></label>
+		<button class="btn-lg" type="submit" value="Submit">Submit</button>
+
+	</form>
+	<form class="form-signin" id="withVin" style="float: right">
+		<h2>Add with VIN</h2>
+		<label>VIN: <input id="vin" type="text" class="form-control" placeholder="1234567890" required=""></label>
+		<button class="btn-lg" type="submit" value="Submit">Submit</button>
+	</form>
+</div>
+
+<script>
+	$('#noVin').on('submit',
+		function (event) {
+			event.preventDefault();
+			console.log("noVin");
+		}
+	);
+	$('#withVin').on('submit',
+		function (event){
+			event.preventDefault();
+			console.log('with vin');
+		}
+	)
+</script>
+<% include footer %>

@@ -14,18 +14,21 @@ var express     = require('express'),
 var index      = require('./controllers/index'),
 	feed       = require('./controllers/feed'),
 	users     = require('./controllers/users'),
-	posts     = require('./controllers/posts');
+	posts     = require('./controllers/posts'),
+    vehicles   = require('./controllers/vehicles');
 
 // Configuration
 
-app.use(bodyparser.urlencoded());
+//app.use(bodyparser.urlencoded());
 app.use(bodyparser.json());
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 app.use(session({
-  secret: 'abcdefghijklmnopzyxwvutsr0129384756'
-}))
+    secret: 'abcdefghijklmnopzyxwvutsr0129384756',
+    saveUninitialized: true,
+    resave: true
+}));
 
 // Begin listening
 
@@ -33,6 +36,7 @@ app.use('/', index);
 app.use('/feed', feed);
 app.use('/users', users);
 app.use('/posts', posts);
+app.use('/vehicles', vehicles);
 
 var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
 var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;

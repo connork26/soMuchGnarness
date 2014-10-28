@@ -3,7 +3,7 @@
 
 // server
 var databaseUrl = "mongodb://heroku_app28817289:5uelqhb4329sn0vv47j2jdolsu@ds063899.mongolab.com:63899/heroku_app28817289";
-var collections = ["users", "posts"];
+var collections = ["users", "posts", "vehicles"];
 var db = require("mongojs").connect(databaseUrl, collections);
 
 exports.insertUser = function (userID, username, callback) {
@@ -35,7 +35,7 @@ exports.getPostsWithUserID = function (userID, callback) {
 						callback(false, postResults);
 					}
 				);
-			} else{ 
+			} else { 
 				db.posts.find({tags: { $in: userResult.intrests } }, 
 					function (err2, postResults) {
 						if (err2){
@@ -51,7 +51,6 @@ exports.getPostsWithUserID = function (userID, callback) {
 }
 
 exports.newUserPost = function (newPost, callback) {
-	console.log('on db');
 	db.posts.save({
 			type: 'user', 
 			vehical: {
@@ -75,6 +74,39 @@ exports.newUserPost = function (newPost, callback) {
 			if(err){
 				console.log(err);
 				return
+			}
+			callback(false);
+		}
+	);
+}
+
+exports.addUserIntrest = function (userId, intrest, callback){
+	db.users.update({_id: userId}, {$push: {intrests: intrest}}, 
+		function (err, result){
+			if(err){
+				console.log(err);
+				return;
+			}
+			callback(false);
+		}
+	);
+}
+
+exports.addCar = function (userId, make, model, year, color, mods, description, callback){
+	db.vehicles.save({
+		type: 'auto',
+		ownerID: userId,
+		make: make,
+		model: model,
+		year: year,
+		color: color,
+		mods: mods,
+		description: description
+	},
+		function (err, result){
+			if(err){
+				console.log(err);
+				return;
 			}
 			callback(false);
 		}

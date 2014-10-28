@@ -1,6 +1,8 @@
 <%include header%>
 <%include nav%>
 
+<script src="/js/s3upload.js"></script>
+
 <div class="container">
 	<form class='newPostForm'>
 		<h2 class="postHeader">New Post</h2>
@@ -19,7 +21,7 @@
         <label>Modification Tags: <input id="modTags" type="text" class="form-control" placeholder="Exhaust, Supercharged, etc..."></label><br />
         <label>Images: <input id="postImages" class="form-control" type="file"></label>
 
-        <input type="submit" class="btn btn-big" value='Post'></input>
+        <input type="submit" class="btn btn-big" value='Post' />
 	</form>
 </div>
 
@@ -36,7 +38,7 @@
 			body: $('#body').val(),
 			make: $('#make').val(),
 			modTags: $('#modTags').val(),
-			picURL: s3_upload;
+			picURL: s3_upload()
 		}
 
 		$.ajax({
@@ -53,10 +55,10 @@
 
 	function s3_upload(){
 	    var s3upload = new S3Upload({
-	        file_dom_selector: 'files',
+	        file_dom_selector: 'postImages',
 	        s3_sign_put_url: '/sign_s3',
 	        onProgress: function(percent, message) {
-	            status_elem.innerHTML = 'Upload progress: ' + percent + '% ' + message;
+	            //status_elem.innerHTML = 'Upload progress: ' + percent + '% ' + message;
 	        },
 	        onFinishS3Put: function(public_url) {
 	        	console.log('Picture Uploaded at url: ' + public_url);
