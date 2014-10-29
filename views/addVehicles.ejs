@@ -22,13 +22,32 @@
 	$('#noVin').on('submit',
 		function (event) {
 			event.preventDefault();
-			console.log("noVin");
+			$('#make').prop('disabled', true);
+			$('#model').prop('disabled', true);
+			$('#year').prop('disabled', true);
 		}
 	);
 	$('#withVin').on('submit',
 		function (event){
 			event.preventDefault();
-			console.log('with vin');
+			$.ajax({
+				url: "/vehicles/getVehicleDetailsFromVin?vin=" + $('#vin').val().toUpperCase(),
+				type: "GET",
+				contentType: "application/json",
+				processData: false
+
+			})
+			.done(
+				function (response){
+					$('#make').val(response.make);
+					$('#model').val(response.model);
+					$('#year').val(response.year);
+
+					$('#make').prop('disabled', true);
+					$('#model').prop('disabled', true);
+					$('#year').prop('disabled', true);
+				}
+			);
 		}
 	)
 </script>

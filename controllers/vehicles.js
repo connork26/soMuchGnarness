@@ -10,7 +10,12 @@ router.route('/getVehicleDetailsFromVin').get(
 	function (req, res){
 		getVehicleDetailsFromEdmunds(req.query.vin,
 			function(data){
-				res.send(data);
+				var response = {
+					make: data.make.name,
+					model: data.model.name,
+					year: data.years[0].year
+				}
+				res.send(response);
 			}
 		);
 	}	
