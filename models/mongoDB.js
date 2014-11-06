@@ -80,7 +80,7 @@ exports.newUserPost = function (newPost, callback) {
 	);
 }
 
-exports.addUserIntrest = function (userId, intrest, callback){
+exports.addUserInterest = function (userId, intrest, callback){
 	db.users.update({_id: userId}, {$push: {intrests: intrest}}, 
 		function (err, result){
 			if(err){
@@ -92,7 +92,7 @@ exports.addUserIntrest = function (userId, intrest, callback){
 	);
 }
 
-exports.addCar = function (userId, make, model, year, color, mods, description, callback){
+exports.saveCar = function (userId, make, model, year, color, mods, description, vinID, callback){
 	db.vehicles.save({
 		type: 'auto',
 		ownerID: userId,
@@ -109,6 +109,18 @@ exports.addCar = function (userId, make, model, year, color, mods, description, 
 				return;
 			}
 			callback(false);
+		}
+	);
+}
+
+exports.getVehiclesForUser = function (userID, callback){
+	db.vehicles.find({ownerID: userID},
+		function(err, result){
+			if(err){
+				console.log(err);
+				return;
+			}
+			callback(false, result);
 		}
 	);
 }

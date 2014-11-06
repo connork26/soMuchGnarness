@@ -3,31 +3,32 @@
 
 <div class="container">
 	<h1>Add Vehicle</h1>
-	<form class="form-signin" id="noVin" style="float: left">
-		<h2>Add With Details</h2>
-		<label>Car Make: <input id='make' type="text" class="form-control" placeholder="Chevy" required="" /></label>
-		<label>Car Model: <input id='model' type="text" class="form-control" placeholder="Corvette" required="" /></label>
-        <label>Car Year: <input id='year' type="text" class="form-control" placeholder="2002" required="" /></label>
-		<button class="btn-lg" type="submit" value="Submit">Submit</button>
+	<div class="container form-newVehicle" id = "vehicleInfo">
+		<form class="form-subVehicleLeft" id="noVin">
+			<h2>Add With Details</h2>
+			<label>Car Make: <input id='make' type="text" class="form-control" placeholder="Chevy" required="" /></label>
+			<label>Car Model: <input id='model' type="text" class="form-control" placeholder="Corvette" required="" /></label>
+			<label>Car Year: <input id='year' type="text" class="form-control" placeholder="2002" required="" /></label>
+		</form>
+		<form class="form-subVehicleRight" id="withVin">
+			<h2>Add with VIN</h2>
+			<label>VIN: <input id="vin" type="text" class="form-control" placeholder="1234567890" required=""></label>
+			<button class="btn btn-primary" type="submit" id="vinSubmit">Search by VIN</button>
+		</form>
+	</div>
 
+	<div class="container form-newVehicle">
+	<form class="form-moreVehicleInfo container">
+		<label>Color: <input id='color' type="text" class="form-control" placeholder="Red" required="" /></label>
+		<label>Modifications: <input id='mods' type="text" class="form-control" placeholder="Exuast, lifted, etc..." required="" /></label>
+		<label>Description: <textarea id="description" class="form-control" width="400"></textarea></label>
+		<button id="infoSubmit" class="btn btn-primary" type="button">Submit</button>
 	</form>
-	<form class="form-signin" id="withVin" style="float: right">
-		<h2>Add with VIN</h2>
-		<label>VIN: <input id="vin" type="text" class="form-control" placeholder="1234567890" required=""></label>
-		<button class="btn-lg" type="submit" value="Submit">Submit</button>
-	</form>
+	</div>
 </div>
 
 <script>
-	$('#noVin').on('submit',
-		function (event) {
-			event.preventDefault();
-			$('#make').prop('disabled', true);
-			$('#model').prop('disabled', true);
-			$('#year').prop('disabled', true);
-		}
-	);
-	$('#withVin').on('submit',
+	$('#vinSubmit').on('click',
 		function (event){
 			event.preventDefault();
 			$.ajax({
@@ -50,5 +51,31 @@
 			);
 		}
 	)
+	$('#infoSubmit').on('click',
+		function (event){
+			console.log("info submitted");
+			event.preventDefault();
+			var payload = {
+				make: $('#make').val(),
+				model: $('#model').val(),
+				year: $('#year').val(),
+				color: $('#color').val(),
+				mods: $('#mods').val(),
+				description: $('#description').val(),
+				vin: $('#vin').val()
+			};
+
+			$.ajax({
+				url: '/vehicles/addVehicle',
+				type: "POST",
+				contentType: "application/json",
+				data: JSON.stringify(payload)
+			})
+			.done(function (response){
+				document.location.href = "/users/account";
+			});
+
+		}
+	);
 </script>
 <% include footer %>

@@ -4,5 +4,24 @@
 <div class="container">
 	<h1>My Account</h1>
 	<a type="btn" href="/vehicles/addVehicles">Add Vehicles</a>
+	<div id="vehicleTableContainer">
+
+	</div>
 </div>
 <% include footer %>
+
+<script>
+	$(document).ready(
+		function() {
+			$.ajax({
+				url: "/vehicles/getUserVehicles",
+				type: "GET",
+				processData: false
+			})
+				.done(
+				function (response) {
+					console.log(response);
+				});
+		}
+	)
+</script>

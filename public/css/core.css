@@ -42,9 +42,38 @@
   text-align: center;
 }
 .signup-page{
-	height: auto;
-	width: auto;
+  height: auto;
+  width: auto;
   background-color: #eee;
+}
+
+.form-newVehicle{
+  max-width: 550px;
+  padding: 15px;
+  margin: 0 auto;
+  background-color: #ababab;
+  border-radius: 20px;
+}
+
+.form-subVehicleRight, .form-subVehicleLeft{
+  max-width: 250px;
+  text-align: center;
+}
+
+.form-moreVehicleInfo{
+  width: 500px;
+  text-align: center;
+}
+
+.form-newVehicle textarea {
+  width: 400px;
+}
+.form-subVehicleLeft{
+  float: left;
+}
+
+.form-subVehicleRight{
+  float: right;
 }
 
 .form-signin {
@@ -52,14 +81,15 @@
   padding: 15px;
   margin: 0 auto;	
 }
+
 .form-signin .form-signin-heading,
-.form-signin .checkbox {
+.form-signin .checkbox{
   margin-bottom: 10px;
 }
-.form-signin .checkbox {
+.form-signin .checkbox{
   font-weight: normal;
 }
-.form-signin .form-control {
+.form-signin .form-control{
   position: relative;
   height: auto;
   -webkit-box-sizing: border-box;
