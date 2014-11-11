@@ -32,7 +32,7 @@ $(document).ready(function (){
             processData: false,
             data: JSON.stringify(payload),
             complete: function (data) {
-                window.location.replace('/feed');
+                document.location.href = '/feed';
             }
         });
     });

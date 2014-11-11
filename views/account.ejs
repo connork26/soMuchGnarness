@@ -4,8 +4,39 @@
 <div class="container">
 	<h1>My Account</h1>
 	<a type="btn" href="/vehicles/addVehicles">Add Vehicles</a>
-	<div id="vehicleTableContainer">
-
+	<div class="row">
+		<div class="col-md-8">
+			<h2>My Vehicles</h2>
+			<% if(vehicles.length == 0){ %>
+				<h2>No vehicles added yet!</h2>
+			<% } else { %>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Year</th>
+							<th>Make</th>
+							<th>Model</th>
+							<th>Mods</th>
+							<th>VIN</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% for (var i = 0; i < vehicles.length ; i++) {%>
+							<tr>
+								<td><%= vehicles[i].year %></td>
+								<td><%= vehicles[i].make %></td>
+								<td><%= vehicles[i].model %></td>
+								<td><%= vehicles[i].mods %></td>
+								<td><%= vehicles[i].VIN %></td>
+							</tr>
+						<% } %>
+					</tbody>
+				</table>
+			<% } %>
+		</div>
+		<div class="col-lg-4">
+			<h2>My posts</h2>
+		</div>
 	</div>
 </div>
 <% include footer %>

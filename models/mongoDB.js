@@ -124,3 +124,16 @@ exports.getVehiclesForUser = function (userID, callback){
 		}
 	);
 }
+
+exports.getPostsByUser = function (userID, callback){
+	db.posts.find({userID: userID},
+		function (err, result){
+			if (err){
+				console.log(err);
+				callback(true);
+			} else {
+				callback(false, result);
+			}
+		}
+	);
+}

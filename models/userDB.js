@@ -49,12 +49,12 @@ exports.createUser = function (email, username, password, zip, birthyear, callba
     var query = 'INSERT INTO Users (email, username, password, zipcode, birthyear) values (' +  
         '"' + email + '", "' + username + '", "' + password + '", ' + zip + ', ' + birthyear + ');';
 
+    console.log(query);
     connection.query(query, 
         function (err, result){
             if (err) {
                 console.log(err);
                 callback(true, err);
-                return;
             } else {
                 callback(false);                
             }

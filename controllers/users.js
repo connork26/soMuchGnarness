@@ -79,13 +79,21 @@ router.post('/addIntrest',
 
 router.get('/account',
 	function (req, res){
-		res.render('account', {username: req.session.username});
+		mongoDB.getVehiclesForUser(req.session.userID,
+			function(err, vehicles){
+				mongoDB.getPostsByUser(req.session.userID,
+					function(err2, posts){
+						res.render('account', {username: req.session.username, vehicles: vehicles, posts: posts});
+					}
+				);
+			}
+		);
 	}
 );
 
-router.get('/addVehical',
+router.get('/addVehicle',
 	function (req, res){
-		res.render('addVehical', {username: req.session.username});
+		res.render('addVehicles', {username: req.session.username});
 	}
 );
 

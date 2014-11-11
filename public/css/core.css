@@ -155,3 +155,12 @@ div.post {
 .post-content, .post-vehical {
   margin-left: 20px;
 }
+
+.sidebar-wrapper {
+  z-index: 1000;
+  position: fixed;
+  height: 100%;
+  border-right: solid #000000 2px;
+}
+
+

@@ -17,46 +17,59 @@
 </div>
 
 <div class="container">
-	<div class="feed-header clearfix">
-			<h2 class="pull-left">Feed</h2>
-			<button type="button" class="btn btn-default btn-md feed-button pull-right" id='newPostButton'>Post</button>
-	</div>
-
-	<div class="feed">
-		<div class='searchForDiv'>
-			
-			<button type="button" class="btn btn-default btn-md interest" data-toggle="modal" data-target="#myModal">Add Interest</button>
-			<h4 class="interest">Show results for:</h4>
-				<% for (var c = 0; c < userInterests.length; c++) { %>
-					<p class='interest'><%= userInterests[c] %></p>
-				<% } %>
-		</div>
-		<% for (var i = 0; i < posts.length; i++) { %>
-			<div class="post col-md-6">
-				<% if (posts[i].content.image) { %>
-					<div class="post-image">
-						<img src="<%= posts[i].content.image %>" alt=""> 
-					</div>
-				<% } %>
-				<div class="post-content-container">
-					<div class="post-content">
-						<h3 class="post-header"><%= posts[i].content.title %></h3>
-						<p><%= posts[i].content.body %></p>
-					</div>
-				</div>
-				<div class="post-vehical-container">
-					<div class="post-vehical">
-						<h4 class="post-vehical-descr"><%= posts[i].vehical.make %> <%= posts[i].vehical.model %> <%= posts[i].vehical.year %></h4>
-						<p>Mods:
-							<% for (var j = 0; j < (posts[i].modTags.length > 5? 5 : posts[i].modTags.length); j++) { %>
-								<%= posts[i].modTags[j] %>
-							<% } %>
-						</p>
-					</div>
+	<div class="row">
+		<div class="col-md-2">
+			<div class="collapse, hidden-md, hidden-sm, hidden-xs">
+				<div class="sidebar-wrapper">
+					<h1>Sidebar</h1>
 				</div>
 			</div>
-		<% } %>
+		</div>
 
+		<div class="col-md-10" role="main">
+			<div class="feed-header clearfix">
+					<h2 class="pull-left">Feed</h2>
+					<button type="button" class="btn btn-default btn-md feed-button pull-right" id='newPostButton'>Post</button>
+			</div>
+
+			<div class="feed">
+				<div class='searchForDiv'>
+
+					<button type="button" class="btn btn-default btn-md interest" data-toggle="modal" data-target="#myModal">Add Interest</button>
+					<h4 class="interest">Show results for:</h4>
+						<% for (var c = 0; c < userInterests.length; c++) { %>
+							<p class='interest'><%= userInterests[c] %></p>
+						<% } %>
+				</div>
+				<% for (var i = 0; i < posts.length; i++) { %>
+					<div class="post col-md-12">
+						<% if (posts[i].content.image) { %>
+							<div class="post-image">
+								<img src="<%= posts[i].content.image %>" alt="">
+							</div>
+						<% } %>
+						<div class="post-content-container">
+							<div class="post-content">
+								<h3 class="post-header"><%= posts[i].content.title %></h3>
+								<p><%= posts[i].content.body %></p>
+							</div>
+						</div>
+						<div class="post-vehical-container">
+							<div class="post-vehical">
+								<h4 class="post-vehical-descr"><%= posts[i].vehical.make %> <%= posts[i].vehical.model %> <%= posts[i].vehical.year %></h4>
+								<p>Mods:
+									<% for (var j = 0; j < (posts[i].modTags.length > 5? 5 : posts[i].modTags.length); j++) { %>
+										<%= posts[i].modTags[j] %>
+									<% } %>
+								</p>
+							</div>
+						</div>
+					</div>
+				<% } %>
+			</div>
+
+
+		</div>
 	</div>
 </div>
 
